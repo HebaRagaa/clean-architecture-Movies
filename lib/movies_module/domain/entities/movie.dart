@@ -7,6 +7,8 @@ class Movie extends Equatable {
   final List<int> genreId;
   final String overview; //اللي هو الديسكربشن
   final double voteAverage; //اللي هو التصويت او التقييم
+  final double releaseDate;
+
 
   //والريكويرد او علامة النل ؟ ف تسمياتهم فوق بتعتمد ع الكي والفاليو ف الايه بي اي وبالاتفاق مع الباك
   const Movie({
@@ -17,12 +19,14 @@ class Movie extends Equatable {
     required this.genreId,
     required this.overview,
     required this.voteAverage,
+    required this.releaseDate,
+
   });
 
   //هنكليك جنريت ومنها نختار اكويتابل برو بيرتز
   @override
   List<Object> get props =>
-      [id, title, backdropPath, genreId, overview, voteAverage,];
+      [id, title, backdropPath, genreId, overview, voteAverage,releaseDate ];
 
 
 //الباكيدج اكويتابل وفرت علينا كل ده
