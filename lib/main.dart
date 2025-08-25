@@ -8,7 +8,8 @@ void main() {
       backdropPath: 'backdropPath',
       genreId: [0],
       overview: 'overview',
-      voteAverage: 1.0
+      voteAverage: 1.0,
+      releaseDate: 2022-5-4 ,
   );
 
   Movie movie1 = const Movie(
@@ -17,7 +18,9 @@ void main() {
       backdropPath: 'backdropPath',
       genreId: [0],
       overview: 'overview',
-      voteAverage: 1.0
+      voteAverage: 1.0,
+      releaseDate: 2022-5-4 ,
+
   );
   print(movie == movie1 );
   //ده بيطبع الاي دينت فايل رقم التعريفي للفايل وهيطلع مختلف الهاش وانا معايا اتنين اوبجيكت بنفس القيم

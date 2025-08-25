@@ -12,5 +12,6 @@ abstract class BaseMoviesRepository {
  Future<List<Movie>> getPopularMovies();
  Future<List<Movie>> getTopRatedMovies () ;
 
+ //وبعدين هنروح لليوز كيس وطبعا مش هنعمل ملف دارت واحد دول هيبقوا تلات ملفات للتلات ميثود اللي فوق
 }
 
