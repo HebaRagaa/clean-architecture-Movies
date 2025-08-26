@@ -2,33 +2,33 @@ import 'package:flutter/material.dart';
 import 'package:movies_tv/movies_module/domain/entities/movie.dart';
 
 void main() {
-  Movie movie = const Movie(
-      id: 1,
-      title: 'title',
-      backdropPath: 'backdropPath',
-      genreId: [0],
-      overview: 'overview',
-      voteAverage: 1.0,
-      releaseDate: 2022-5-4 ,
-  );
-
-  Movie movie1 = const Movie(
-      id: 1,
-      title: 'title',
-      backdropPath: 'backdropPath',
-      genreId: [0],
-      overview: 'overview',
-      voteAverage: 1.0,
-      releaseDate: 2022-5-4 ,
-
-  );
-  print(movie == movie1 );
-  //ده بيطبع الاي دينت فايل رقم التعريفي للفايل وهيطلع مختلف الهاش وانا معايا اتنين اوبجيكت بنفس القيم
-  //ف لازم يطبع ترو ونفس الهتاش لكن مش بيعمل كده ف لازم برجع ف الانتيتز وبعمل اوفر رايد
-  print(movie.hashCode);
-  print(movie1.hashCode);
-//المشكله دي بتحصل لو عندك ايه بي اي وفيها دابلكيتد داتا كتير يعني كل الرو اللي موجود ف الكولوم بنفس القيم
- //
+//   Movie movie = const Movie(
+//       id: 1,
+//       title: 'title',
+//       backdropPath: 'backdropPath',
+//       genreId: [0],
+//       overview: 'overview',
+//       voteAverage: 1.0,
+//       releaseDate: 2022-5-4 ,
+//   );
+//
+//   Movie movie1 = const Movie(
+//       id: 1,
+//       title: 'title',
+//       backdropPath: 'backdropPath',
+//       genreId: [0],
+//       overview: 'overview',
+//       voteAverage: 1.0,
+//       releaseDate: 2022-5-4 ,
+//
+//   );
+//   print(movie == movie1 );
+//   //ده بيطبع الاي دينت فايل رقم التعريفي للفايل وهيطلع مختلف الهاش وانا معايا اتنين اوبجيكت بنفس القيم
+//   //ف لازم يطبع ترو ونفس الهتاش لكن مش بيعمل كده ف لازم برجع ف الانتيتز وبعمل اوفر رايد
+//   print(movie.hashCode);
+//   print(movie1.hashCode);
+// //المشكله دي بتحصل لو عندك ايه بي اي وفيها دابلكيتد داتا كتير يعني كل الرو اللي موجود ف الكولوم بنفس القيم
+//  //
   runApp(const MyApp());
 }
 

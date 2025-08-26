@@ -4,7 +4,7 @@ class Movie extends Equatable {
   final int id;
   final String title;
   final String backdropPath; //الصوره نفسها
-  final List<int> genreId;
+  final List<int> genreIds;
   final String overview; //اللي هو الديسكربشن
   final double voteAverage; //اللي هو التصويت او التقييم
   final double releaseDate;
@@ -16,7 +16,7 @@ class Movie extends Equatable {
     required this.id,
     required this.title,
     required this.backdropPath,
-    required this.genreId,
+    required this.genreIds,
     required this.overview,
     required this.voteAverage,
     required this.releaseDate,
@@ -26,7 +26,7 @@ class Movie extends Equatable {
   //هنكليك جنريت ومنها نختار اكويتابل برو بيرتز
   @override
   List<Object> get props =>
-      [id, title, backdropPath, genreId, overview, voteAverage,releaseDate ];
+      [id, title, backdropPath, genreIds, overview, voteAverage,releaseDate ];
 
 
 //الباكيدج اكويتابل وفرت علينا كل ده
