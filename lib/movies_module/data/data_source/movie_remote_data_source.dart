@@ -3,6 +3,8 @@
 // عايزين نعرف الداتا سورس اللي موجودين عندنا ف الابلكيشن وعشان تحددها ف انت خلاص حدتها ف اليوز كيسز
  // ومش محتاجين نفكر كتير بنحدد الميثودز اللي جواه ع اساس اليوز كيسز ف اول كيسز عندي هو اول ميثود هنا وهكذا
   import 'package:dio/dio.dart';
+import 'package:movies_tv/core_%20module/error/exceptions.dart';
+import 'package:movies_tv/core_%20module/network/error_message_model.dart';
 import 'package:movies_tv/movies_module/data/models/movie_model.dart';
 
 class MovieRemoteDataSource {
@@ -21,7 +23,13 @@ class MovieRemoteDataSource {
        (e) => MovieModel.fromJson(e),
    ));
  } else {
-   return [] ;
+   //دلوقتي انا عايز استعمل الداتا اللي بترجعلي ف حالة الايرور او انه مش ناجح ف هستقبل البيانات
+    //وعشان لما لعبنا ف الايه بي اي وظهرت الماسج ف الحالات غير ال200 عباره عن تلاته فهعمل موديل
+    throw ServerException(
+        errorMessageModel: ErrorMessageModel.fromJson( response.data )
+      );
+   //جوه الايلس المفروض ابعت اكسيبشن او اريترن نفس نوع المويل اللي فوق بتاع الميثود نفسها
+   //ف انا دلوقتي هعمل حاجه جينرال ع الابلكيشن كله وهى ديركتولي ع الابلكيشن كله اسميه ايرور ف الكور وجواه اكسيبشن
  }
   }
 
