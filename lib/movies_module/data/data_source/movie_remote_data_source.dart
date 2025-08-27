@@ -11,16 +11,17 @@ import 'package:movies_tv/movies_module/data/models/movie_model.dart';
  //بنبقى محتاجين نعمل كونتراكت او ابستراكت كلاس بيحدد الاسماء والريترن تايب بتاع كل ميثود
   //وعشان لو حبيت تقرا او تعرف الميثودز يبقى من هنا
 abstract class BaseMovieRemoteDataSource {
-   Future<List<MovieModel>> getNowPlayingMovie () ;
+   Future<List<MovieModel>> getNowPlayingMovies () ;
    //ولما اجي اضيف اي ميثود تاني لازم اكتبها هنا الاول اقوله هعمل كونتراكت
-   Future<List<MovieModel>> getPopularMovie () ;
-
+   Future<List<MovieModel>> getPopularMovies () ;
+   Future<List<MovieModel>> getTopRatedMovies () ;
+   // وبراجع ع اليوز كيس اللي ف الدومين لو اتضافت ميثود جديده اضيفها هنا ووبعدين اعملها اوفر رايد تحت
 }
 
 class MovieRemoteDataSource extends BaseMovieRemoteDataSource {
-  //جوه الميثود دي هبدا اعمل كل الاند بوينت بتاع الجيت ناو بلاينج
  @override
-  Future<List<MovieModel>> getNowPlayingMovie () async {
+ //جوه الميثود دي هبدا اعمل كل الاند بوينت بتاع الجيت ناو بلاينج
+ Future<List<MovieModel>> getNowPlayingMovies () async {
     //هكتب دايو والجيت ركويست من الايه بي اي
    //وهنا بدل ما اكتب البيز يو ار ال والاند بوينت والايه بي اي كي جوا قوسين الجيت,هقسمها ف الايه بي اي كونستانس ق الكور ف النتورك
    final response = await Dio().get(ApiConstance.nowPlayingMoviesPath);
@@ -45,9 +46,34 @@ class MovieRemoteDataSource extends BaseMovieRemoteDataSource {
   }
 
   @override
-  Future<List<MovieModel>> getPopularMovie() {
-  }
+  Future<List<MovieModel>> getPopularMovies() async {
+ final response = await Dio().get(ApiConstance.popularMoviesPath) ;
+ //ومن الاحسن نتاكد من كل ركويست كويس ف حالة السكسيس بالخصوص انه نفس الفورمات او شكل الداتا ريزلت ف ليست
+   if (response.statusCode == 200 ) {
+     return List<MovieModel>.from((response.data['results'] as List ).map(
+         (e) => MovieModel.fromJson (e) ,
+     ));
+   } else {
+     throw ServerException(
+         errorMessageModel: ErrorMessageModel.fromJson(response.data )) ;
+   }
 
+ }
+
+
+  @override
+  Future<List<MovieModel>> getTopRatedMovies() async {
+ final response = await Dio().get(ApiConstance.topRatedMoviesPath) ;
+ if (response.statusCode == 200 ) {
+   return List<MovieModel>.from((response.data['results'] as List ).map(
+         (e) => MovieModel.fromJson (e) ,
+   ));
+ } else {
+   throw ServerException(
+       errorMessageModel: ErrorMessageModel.fromJson(response.data )) ;
+ }
+
+  }
 
 
   }
