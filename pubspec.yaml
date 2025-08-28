@@ -40,6 +40,7 @@ dependencies:
   meta: ^1.16.0
   test_api: ^0.7.6
   characters: ^1.4.0
+  dartz: ^0.10.1
 
 dev_dependencies:
   flutter_test:

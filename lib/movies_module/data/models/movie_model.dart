@@ -19,10 +19,10 @@ import 'package:movies_tv/movies_module/domain/entities/movie.dart';
      title: json['title'],
      backdropPath: json['backdrop_path'],
      //ودي هعملها كده لان الجيندر اي ديز ليست اصلا
-     genreIds: List<int>.from(json['genreIds'].map((e) => e) ),
+     genreIds: List<int>.from(json['genre_ids'].map((e) => e) ),
      overview: json['overview'],
-     voteAverage: json['voteAverage'],
-     releaseDate: json['releaseDate']
+     voteAverage: json['vote_average'],
+     releaseDate: json['release_date']
  );
 
 
