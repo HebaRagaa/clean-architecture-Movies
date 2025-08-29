@@ -7,7 +7,7 @@ class Movie extends Equatable {
   final List<int> genreIds;
   final String overview; //اللي هو الديسكربشن
   final double voteAverage; //اللي هو التصويت او التقييم
-  final double releaseDate;
+  final String releaseDate;
 
 
   //والريكويرد او علامة النل ؟ ف تسمياتهم فوق بتعتمد ع الكي والفاليو ف الايه بي اي وبالاتفاق مع الباك

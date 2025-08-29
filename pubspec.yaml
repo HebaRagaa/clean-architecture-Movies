@@ -41,6 +41,7 @@ dependencies:
   test_api: ^0.7.6
   characters: ^1.4.0
   dartz: ^0.10.1
+  flutter_bloc: ^9.1.1
 
 dev_dependencies:
   flutter_test:

@@ -21,7 +21,8 @@ import 'package:movies_tv/movies_module/domain/entities/movie.dart';
      //ودي هعملها كده لان الجيندر اي ديز ليست اصلا
      genreIds: List<int>.from(json['genre_ids'].map((e) => e) ),
      overview: json['overview'],
-     voteAverage: json['vote_average'],
+     //عشان مره ترجع بدابل ومره انت فبقوله اي قيمه حولها لدابل
+     voteAverage: json['vote_average'].toDouble(),
      releaseDate: json['release_date']
  );
 
