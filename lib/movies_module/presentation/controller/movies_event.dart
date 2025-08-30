@@ -2,23 +2,23 @@
 //  اي حاجه بيكون فيها داتا بنعملها اكستاند للاكويتابل ونعمل البروبيرتز كالعاده بالجنريت
 import 'package:equatable/equatable.dart';
 
-abstract class MoviesEvents extends Equatable {
-  const MoviesEvents(); //ده الكونستراكتور
+abstract class MoviesEvent extends Equatable {
+  const MoviesEvent(); //ده الكونستراكتور
 
   @override
   List<Object> get props => [];
 
 }
 
- class GetNowPlayingMoviesEvent extends MoviesEvents {
+ class GetNowPlayingMoviesEvent extends MoviesEvent {
 
  }
 
-class GetPopularMoviesEvent extends MoviesEvents {
+class GetPopularMoviesEvent extends MoviesEvent {
 
 }
 
-class GetTopRatedMoviesEvent extends MoviesEvents {
+class GetTopRatedMoviesEvent extends MoviesEvent {
 
 }
 

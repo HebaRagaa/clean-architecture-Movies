@@ -25,6 +25,7 @@ class MovieRemoteDataSource extends BaseMovieRemoteDataSource {
     //هكتب دايو والجيت ركويست من الايه بي اي
    //وهنا بدل ما اكتب البيز يو ار ال والاند بوينت والايه بي اي كي جوا قوسين الجيت,هقسمها ف الايه بي اي كونستانس ق الكور ف النتورك
    final response = await Dio().get(ApiConstance.nowPlayingMoviesPath);
+   print(response);
 
  if (response.statusCode == 200 ) {
    //هنا بقوله انت هتجيب الليست موفي فروم يعني من الريسبونس دوت الداتا اللي جوا الريزلت
