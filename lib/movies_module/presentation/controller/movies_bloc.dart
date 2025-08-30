@@ -8,6 +8,8 @@ import 'package:movies_tv/movies_module/domain/usecases/get_now_playing_movies_u
 import 'package:movies_tv/movies_module/presentation/controller/movies_event.dart';
 import 'package:movies_tv/movies_module/presentation/controller/movies_state.dart';
 
+import '../../../core_ module/services/services_locator.dart';
+
 // هنعمل اكستند للبلوك باكيدج وهنلاقيها بتاخد الايفينت والاستيت
  class MoviesBloc extends Bloc<MoviesEvent, MoviesState> {
   final GetNowPlayingMoviesUseCase  getNowPlayingMoviesUseCase ;

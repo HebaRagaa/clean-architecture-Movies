@@ -2,6 +2,7 @@
 
  import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movies_tv/movies_module/domain/usecases/get_now_playing_movies_usecase.dart';
 import 'package:movies_tv/movies_module/presentation/controller/movies_bloc.dart';
 import 'package:movies_tv/movies_module/presentation/controller/movies_event.dart';
 import 'package:movies_tv/movies_module/presentation/controller/movies_state.dart';
@@ -18,7 +19,7 @@ class MoviesScreen extends StatelessWidget {
   //انت محتاج تعمل سيت اب للاوبجيكت اللي هتخزنها ف الميموري فهنروح ع الكور نعمل سيرفزز وجواها سيرفزز لوكيتور
    @override
    Widget build(BuildContext context) {
-     //دلوقتي عايز اقول للبلوك اللي عندي انت اول ماتتكريت ناديلي ع الجيت ناو بلاينج موفيز
+    //دلوقتي عايز اقول للبلوك اللي عندي انت اول ماتتكريت ناديلي ع الجيت ناو بلاينج موفيز
 //وعشان استعمل البلوك ف الموفيز اسكرين ف محتاج ويدجت تكريت نيو استنسز من من البلوك ده
      return BlocProvider(
        //والبلوك بروفايدر بتسمحلي انها تكريتلي انستانس من الموفي بلوك

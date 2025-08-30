@@ -5,6 +5,7 @@ import 'package:movies_tv/movies_module/data/data_source/movie_remote_data_sourc
 import 'package:movies_tv/movies_module/data/repository/movies_repository.dart';
 import 'package:movies_tv/movies_module/domain/repository/base_movies_repository.dart';
 import 'package:movies_tv/movies_module/domain/usecases/get_now_playing_movies_usecase.dart';
+import 'package:movies_tv/movies_module/presentation/controller/movies_bloc.dart';
 //عشان تستخدم الجيت ات محتاج تقوله جيت ات انستنس وتعملها بره الكلاس عشان تكون جلوبال للبروجيت كله
 //لكن هغيرها من جيت ات ل اس ال اختصار سيرفز لوكيتور
 final sl = GetIt.instance;
@@ -15,6 +16,13 @@ class ServicesLocator {
  //لو عايز اخزن اوبجيكت من الداتا سورس هعمل اس ال دوت وفي ريجستر فاكتوري وحاجات كتير
 //بس هناخد منه الريجيستر ليزي سنجلتون وهنا بقوله دا ليزي ماتكريتهوش غير لما انادي عليه
  
+   //Bloc
+   //ممكن اوقات احتاج اعمل ريلود للداتا او الاوبجيكت ف هنا السنجلتون ليزي مش هيفيدني
+  //لان مهمة السنجلتون ليزي تخلي نفس الاوبجيكت حتى لو اتعمل ريلود هو لا او يتعمل وقت ما احتاجه
+  //والسينجلتون بس من غير ليزي بقوله كريت الاوبجيكت من غير ما استخدمه
+   //الريجيستر فاكتوري بتقولك انت كل ماتنادي ع الموفي بلوك هكريتلك نيو اوبجيكت من الموفي بلوك يعني يتعمل ابديت للموفي للاسكرين
+   sl.registerFactory( () => MoviesBloc(sl()));
+
     //use case
  sl.registerLazySingleton( () => GetNowPlayingMoviesUseCase(sl())) ;
     
