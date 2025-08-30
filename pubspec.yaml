@@ -42,6 +42,7 @@ dependencies:
   characters: ^1.4.0
   dartz: ^0.10.1
   flutter_bloc: ^9.1.1
+  get_it: ^8.2.0
 
 dev_dependencies:
   flutter_test:

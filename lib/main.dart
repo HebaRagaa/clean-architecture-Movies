@@ -1,9 +1,12 @@
 
 
   import 'package:flutter/material.dart';
+import 'package:movies_tv/core_%20module/services/services_locator.dart';
   import 'package:movies_tv/movies_module/presentation/screens/movies_screen.dart';
 
 void main() {
+  //هنادي ع السيرفر لوكيتور ع الانشيال
+  ServicesLocator().init() ;
   runApp(const MyApp());
 }
 
