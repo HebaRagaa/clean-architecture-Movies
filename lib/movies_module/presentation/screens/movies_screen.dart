@@ -1,6 +1,5 @@
-import 'package:animate_do/animate_do.dart';
-import 'package:cached_network_image/cached_network_image.dart';
-import 'package:carousel_slider/carousel_slider.dart';
+
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -8,10 +7,8 @@ import 'package:movies_tv/movies_module/presentation/component/now_playing_compo
 import 'package:movies_tv/movies_module/presentation/component/popular_components.dart';
 import 'package:movies_tv/movies_module/presentation/component/top_rated_component.dart';
 import 'package:movies_tv/movies_module/presentation/controller/movies_bloc.dart';
-import 'package:shimmer/shimmer.dart';
-import '../../../core_ module/network/api_constance.dart';
+import 'package:movies_tv/movies_module/presentation/controller/movies_event.dart';
 import '../../../core_ module/services/services_locator.dart';
-import '../../../core_ module/utils/dummy.dart';
 
 //import 'package:animate_do/animate_do.dart'; // 🎬 (animate_do) باكيج خاص بالأنيميشن الجاهزة
 // import 'package:cached_network_image/cached_network_image.dart'; // 🖼️ (cached_network_image) تحميل صور من النت مع الكاش
@@ -29,7 +26,11 @@ class MoviesScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       //وطبعا بعد عمل السيرفز لوكيتور الاس ال مش محتاج اعمل ريترن موفيز بلوك وبتاخد اليوز كيس لكن كتبت الاس ال بس
-      create: (context) => sl<MoviesBloc>(),
+      create: (BuildContext context) =>
+                 sl<MoviesBloc>()
+                   ..add(GetNowPlayingMoviesEvent())
+                   ..add(GetPopularMoviesEvent()),
+      //ومن الاحسن طبعا والصح البلوك بيلدر ع الصفحه كلها والاحسن يتحط ف الكومبوننت لان غير كده هيقلل البيرفورمنس ويزيد الميموري
       child: Scaffold(
           backgroundColor: Colors.grey.shade900,
           body: SingleChildScrollView(
@@ -40,7 +41,9 @@ class MoviesScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+
                 const NowPlayingComponent(),
+
                 Container(
                   margin: const EdgeInsets.fromLTRB(16.0, 24.0, 16.0, 8.0),
                   child: Row(
@@ -69,6 +72,7 @@ class MoviesScreen extends StatelessWidget {
                                 style: TextStyle(color: Colors.white),),
                               Icon(
                                 Icons.arrow_forward_ios,
+                                color: Colors.white,
                                 size: 16.0,
                               )
                             ],
@@ -78,7 +82,9 @@ class MoviesScreen extends StatelessWidget {
                     ],
                   ),
                 ),
+
                 const PopularComponents(),
+
                 Container(
                   margin: const EdgeInsets.fromLTRB(
                     16.0,
@@ -111,6 +117,7 @@ class MoviesScreen extends StatelessWidget {
                                 style: TextStyle(color: Colors.white),),
                               Icon(
                                 Icons.arrow_forward_ios,
+                                color: Colors.white,
                                 size: 16.0,
                               )
                             ],
