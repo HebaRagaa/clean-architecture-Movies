@@ -7,6 +7,7 @@ import 'package:equatable/equatable.dart';
 import 'package:movies_tv/core_%20module/utils/enums.dart';
 import 'package:movies_tv/movies_module/domain/entities/movie.dart';
 
+//يبقى كده لو هعمل ميثود جديده بضيفها ف الاستيت والبلوك والاسكرين اقصد هى موجوده بس مافعلتهاش عشان تظهر
 class MoviesState extends Equatable {
   //اول حاجه محتاج اعمل فاينال للموفيز اللي هتجيلي من اليوز كيسز
 //لو رحت لاول يوز اللي هى الجيت هلاقيها بترجع ليست اوف موفي وهسميها ناو بلاينج
@@ -17,6 +18,10 @@ class MoviesState extends Equatable {
   final List<Movie> popularMovies ;
   final RequestState  popularState ;
   final String popularMessage ;
+
+  final List<Movie> topRatedMovies ;
+  final RequestState  topRatedState ;
+  final String topRatedMessage ;
 
 //شوفي الكومنتات عشان كده عملت كوبي ويز بدل ما كان بيظهر كونست ليستا فاضيه او لودينج او استرنج فاضي
 //ف الكوبي ويز بتخليني اتفادى كل ده ففي الكوبي ويز بقوله ف اول جزء اي حاجه من دول ممكن ترجعلك نل
@@ -33,7 +38,9 @@ class MoviesState extends Equatable {
     this.popularState = RequestState.loading,
     this.popularMessage = '',
 
-
+    this.topRatedMovies = const [],
+    this.topRatedState = RequestState.loading,
+    this.topRatedMessage = '',
   });
 
   //وبدل ما اكريت اوبجيكت جديد من الموفي استيت ف الموفي بلوك عند الايميت,لا انا هستخدم الكوبي ويز
@@ -50,6 +57,10 @@ class MoviesState extends Equatable {
      RequestState?  popularState ,
      String? popularMessage ,
 
+    List<Movie>? topRatedMovies ,
+    RequestState?  topRatedState ,
+    String? topRatedMessage ,
+
   }) {
     return MoviesState(
       //لو القيمه اللي جيالك بنل , خد القيمه اللي ف الاوبجيكت
@@ -61,6 +72,9 @@ class MoviesState extends Equatable {
       popularState: popularState ?? this.popularState,
       popularMessage: popularMessage ?? this.popularMessage,
 
+      topRatedMovies: topRatedMovies ?? this.topRatedMovies,
+      topRatedState: topRatedState ?? this.topRatedState,
+      topRatedMessage: topRatedMessage ?? this.topRatedMessage,
 
     );
   }
@@ -74,6 +88,10 @@ class MoviesState extends Equatable {
     popularMovies,
     popularState,
     popularMessage,
+
+    topRatedMovies,
+    topRatedState,
+    topRatedMessage,
 
   ];
 

@@ -26,11 +26,16 @@ class MoviesScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       //وطبعا بعد عمل السيرفز لوكيتور الاس ال مش محتاج اعمل ريترن موفيز بلوك وبتاخد اليوز كيس لكن كتبت الاس ال بس
+      //وبعدين نروح ع الكومبوننت بتاع الميثود الجديده ونعمل عليه البلوك بيلدر
+      //ولو عاملين ملف الدامي للبيانات الموقته اغيره واحط الاستيت دوت مثلا التوب ريتيد موفيز
       create: (BuildContext context) =>
                  sl<MoviesBloc>()
+                 //يبقى كده لو هعمل ميثود جديده بضيفها ف الاستيت والبلوك والاسكرين اقصد هى موجوده بس مافعلتهاش عشان تظهر
                    ..add(GetNowPlayingMoviesEvent())
-                   ..add(GetPopularMoviesEvent()),
-      //ومن الاحسن طبعا والصح البلوك بيلدر ع الصفحه كلها والاحسن يتحط ف الكومبوننت لان غير كده هيقلل البيرفورمنس ويزيد الميموري
+                   ..add(GetPopularMoviesEvent())
+                   ..add(GetTopRatedMoviesEvent()),
+
+        //ومن الاحسن طبعا والصح البلوك بيلدر ع الصفحه كلها والاحسن يتحط ف الكومبوننت لان غير كده هيقلل البيرفورمنس ويزيد الميموري
       child: Scaffold(
           backgroundColor: Colors.grey.shade900,
           body: SingleChildScrollView(
