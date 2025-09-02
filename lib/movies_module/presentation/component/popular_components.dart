@@ -2,6 +2,7 @@ import 'package:animate_do/animate_do.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movies_tv/core_%20module/utils/enums.dart';
 import 'package:movies_tv/movies_module/presentation/controller/movies_bloc.dart';
 import 'package:movies_tv/movies_module/presentation/controller/movies_state.dart';
 import 'package:shimmer/shimmer.dart';
@@ -13,7 +14,17 @@ class PopularComponents extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<MoviesBloc, MoviesState>(
+      //وبقوله ابنيلي ف حاله واحده او عيد بناءه لما يكون الكارنت استيس السابق مش بيساوي الحالي او بالمختصر بقوله متبنيش غير لو اتغير استيت
+    buildWhen: (previous,current) =>
+                previous.popularState != current.popularState,
       builder: (context, state) {
+        switch (state.nowPlayingState) {
+          case RequestState.loading:
+            return SizedBox(
+              //هعملها بنفس ارتفاع الاسلايدر
+                height: 170,
+                child: Center(child: CircularProgressIndicator()));
+          case RequestState.loaded:
             return FadeIn( // 🎬 (animate_do) لإظهار القائمة بتأثير Fade In
               duration: const Duration(milliseconds: 500),
               child: SizedBox(
@@ -63,7 +74,12 @@ class PopularComponents extends StatelessWidget {
                 ),
               ),
             );
-        },
+          case RequestState.error:
+            return SizedBox(
+                height: 170,
+                child: Center(child: Text(state.nowPlayingMessage)));
+        }
+      }
     );
   }
 }

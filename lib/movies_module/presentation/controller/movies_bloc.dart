@@ -47,6 +47,9 @@ import 'package:movies_tv/movies_module/presentation/controller/movies_state.dar
    // emit(const MoviesState(nowPlayingState: RequestState.loaded));
    //وبكده هنأميت الموفيز استيت والناو بلاينج استيت ونطبع لوديد
    print(result);
+   //ولاحظ ف الاستيت هتلاقي الثلاث حالات ف الاستيت والديفولت لودينج وف الموفي بلوك هتلاقي نفسك بتغير الحاله بتاعتها
+   //من خلال الايميت ف حالة النجاح لوديد وف الايرور ايرور
+
    //بنستعمل الريزلت من خلال فولد ليها وف الليفت هعمل ايميت للماسج اللي راجعه ف حالة الايرور واغير برضو الايميت استيت
    //الالفيلير اللي هبعت منها الماسج
    result.fold( (l) => emit(
@@ -54,7 +57,8 @@ import 'package:movies_tv/movies_module/presentation/controller/movies_state.dar
        state.copyWith (
            nowPlayingState: RequestState.error,
            nowPlayingMessage: l.message)),
-
+       //ولاحظ ف الاستيت هتلاقي الثلاث حالات ف الاستيت والديفولت لودينج وف الموفي بلوك هتلاقي نفسك بتغير الحاله بتاعتها
+       //من خلال الايميت ف حالة النجاح لوديد وف الايرور ايرور
            (r) => emit(
            state.copyWith(
                nowPlayingMovies: r,
