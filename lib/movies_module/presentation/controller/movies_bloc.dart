@@ -40,7 +40,7 @@ import 'package:movies_tv/movies_module/presentation/controller/movies_state.dar
 //ودلوقتي هنبدء ننادي ع اليوز كيس وهلاقيها محتاجه مني بيز موفي ريبوزتري ودي محتاجه بيز ريموت داتا سورس
 //ما ينفعش تنادي على الميثود كـ GetNowPlayingMoviesUseCase.execute() كأنها static، لإن الميثود مش static.
 // لازم تستخدم الـ instance اللي أنت مررته في الكونستراكتور: getNowPlayingMoviesUseCase.
-   final result = await getNowPlayingMoviesUseCase.execute();
+   final result = await getNowPlayingMoviesUseCase();
 //دلوقتي عايز اقول للبلوك اللي عندي انت اول ماتتكريت ناديلي ع الجيت ناو بلاينج موفيز
 //وعشان استعمل البلوك ف الموفيز اسكرين ف محتاج ويدجت تكريت نيو استنسز من من البلوك ده
    //مالهاش لازمه دلوقتي كنا بنتست بيها
@@ -68,7 +68,7 @@ import 'package:movies_tv/movies_module/presentation/controller/movies_state.dar
 
   FutureOr<void> _getPopularMovies(
       GetPopularMoviesEvent event, Emitter<MoviesState> emit) async {
-   final result = await getPopularMoviesUseCase.execute();
+   final result = await getPopularMoviesUseCase();
    result.fold( (l) => emit(
        state.copyWith(
            popularState: RequestState.error,
@@ -83,7 +83,7 @@ import 'package:movies_tv/movies_module/presentation/controller/movies_state.dar
 
   FutureOr<void> _getTopRatedMovies(
       GetTopRatedMoviesEvent event, Emitter<MoviesState> emit) async {
-   final result = await getTopRatedMoviesUseCase.execute();
+   final result = await getTopRatedMoviesUseCase();
    result.fold( (l) => emit(
        state.copyWith(
            topRatedState: RequestState.error,

@@ -10,15 +10,18 @@ import 'package:movies_tv/movies_module/domain/entities/movie.dart';
 import 'package:movies_tv/movies_module/domain/repository/base_movies_repository.dart';
 
 import '../../../core_ module/error/failure.dart';
+import '../../../core_ module/useCase/base_usecase.dart';
 
-class GetTopRatedMoviesUseCase {
+//وبغير هنا الليست موفي ع حسب الريتيرن اللي مستنيها ترجعلي
+class GetTopRatedMoviesUseCase extends BaseUseCase <List<Movie>>{
 
   final BaseMoviesRepository baseMoviesRepository ;
   GetTopRatedMoviesUseCase(this.baseMoviesRepository);
 
   //ودلوقتي هنعمل ميثود ينادي ع الميثود بتاع جيت ناو بلاينج موفيز اللي ف الريبو وهسميها اكس كيوت
   //وهنا مش هبعت حاجه ف الباراميترز اللي هما القوسين لان لما هشوف هلاقي انه البيز يو ار ال والاند بوينت والايه بي اي كي
-  Future<Either<Failure,List<Movie>>> execute() async {
+  @override
+  Future<Either<Failure,List<Movie>>> call() async {
     //وجوا البدي هعمل اويت عشان زي ما اتفقنا كله فيوتشر ف البيز موفيز ريبوزتري
     return await baseMoviesRepository.getTopRatedMovies();
 
