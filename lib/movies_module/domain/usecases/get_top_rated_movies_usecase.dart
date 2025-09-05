@@ -13,7 +13,7 @@ import '../../../core_ module/error/failure.dart';
 import '../../../core_ module/useCase/base_usecase.dart';
 
 //وبغير هنا الليست موفي ع حسب الريتيرن اللي مستنيها ترجعلي
-class GetTopRatedMoviesUseCase extends BaseUseCase <List<Movie>>{
+class GetTopRatedMoviesUseCase extends BaseUseCase <List<Movie>,NoParameters>{
 
   final BaseMoviesRepository baseMoviesRepository ;
   GetTopRatedMoviesUseCase(this.baseMoviesRepository);
@@ -21,7 +21,7 @@ class GetTopRatedMoviesUseCase extends BaseUseCase <List<Movie>>{
   //ودلوقتي هنعمل ميثود ينادي ع الميثود بتاع جيت ناو بلاينج موفيز اللي ف الريبو وهسميها اكس كيوت
   //وهنا مش هبعت حاجه ف الباراميترز اللي هما القوسين لان لما هشوف هلاقي انه البيز يو ار ال والاند بوينت والايه بي اي كي
   @override
-  Future<Either<Failure,List<Movie>>> call() async {
+  Future<Either<Failure,List<Movie>>> call(NoParameters noParameters) async {
     //وجوا البدي هعمل اويت عشان زي ما اتفقنا كله فيوتشر ف البيز موفيز ريبوزتري
     return await baseMoviesRepository.getTopRatedMovies();
 

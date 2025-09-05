@@ -5,6 +5,7 @@
  import 'dart:async';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movies_tv/core_%20module/useCase/base_usecase.dart';
 import 'package:movies_tv/core_%20module/utils/enums.dart';
 import 'package:movies_tv/movies_module/domain/usecases/get_Popular_movies_usecase.dart';
 import 'package:movies_tv/movies_module/domain/usecases/get_now_playing_movies_usecase.dart';
@@ -40,7 +41,7 @@ import 'package:movies_tv/movies_module/presentation/controller/movies_state.dar
 //ودلوقتي هنبدء ننادي ع اليوز كيس وهلاقيها محتاجه مني بيز موفي ريبوزتري ودي محتاجه بيز ريموت داتا سورس
 //ما ينفعش تنادي على الميثود كـ GetNowPlayingMoviesUseCase.execute() كأنها static، لإن الميثود مش static.
 // لازم تستخدم الـ instance اللي أنت مررته في الكونستراكتور: getNowPlayingMoviesUseCase.
-   final result = await getNowPlayingMoviesUseCase();
+   final result = await getNowPlayingMoviesUseCase( const NoParameters());
 //دلوقتي عايز اقول للبلوك اللي عندي انت اول ماتتكريت ناديلي ع الجيت ناو بلاينج موفيز
 //وعشان استعمل البلوك ف الموفيز اسكرين ف محتاج ويدجت تكريت نيو استنسز من من البلوك ده
    //مالهاش لازمه دلوقتي كنا بنتست بيها
@@ -68,7 +69,7 @@ import 'package:movies_tv/movies_module/presentation/controller/movies_state.dar
 
   FutureOr<void> _getPopularMovies(
       GetPopularMoviesEvent event, Emitter<MoviesState> emit) async {
-   final result = await getPopularMoviesUseCase();
+   final result = await getPopularMoviesUseCase(const NoParameters());
    result.fold( (l) => emit(
        state.copyWith(
            popularState: RequestState.error,
@@ -83,7 +84,7 @@ import 'package:movies_tv/movies_module/presentation/controller/movies_state.dar
 
   FutureOr<void> _getTopRatedMovies(
       GetTopRatedMoviesEvent event, Emitter<MoviesState> emit) async {
-   final result = await getTopRatedMoviesUseCase();
+   final result = await getTopRatedMoviesUseCase(const NoParameters());
    result.fold( (l) => emit(
        state.copyWith(
            topRatedState: RequestState.error,

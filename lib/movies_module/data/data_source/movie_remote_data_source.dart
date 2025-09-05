@@ -15,7 +15,10 @@ abstract class BaseMovieRemoteDataSource {
    //ولما اجي اضيف اي ميثود تاني لازم اكتبها هنا الاول اقوله هعمل كونتراكت
    Future<List<MovieModel>> getPopularMovies () ;
    Future<List<MovieModel>> getTopRatedMovies () ;
-   // وبراجع ع اليوز كيس اللي ف الدومين لو اتضافت ميثود جديده اضيفها هنا ووبعدين اعملها اوفر رايد تحت
+
+  // Future<List<MovieModel>> getMovieDetail () ;
+
+// وبراجع ع اليوز كيس اللي ف الدومين لو اتضافت ميثود جديده اضيفها هنا ووبعدين اعملها اوفر رايد تحت
 }
 
 class MovieRemoteDataSource extends BaseMovieRemoteDataSource {
@@ -75,6 +78,11 @@ class MovieRemoteDataSource extends BaseMovieRemoteDataSource {
  }
 
   }
+
+  // @override
+  // Future<List<MovieModel>> getMovieDetail() {
+  //
+  // }
 
 
   }

@@ -5,8 +5,8 @@
 
   import 'package:dartz/dartz.dart';
 import 'package:movies_tv/core_%20module/error/failure.dart';
-import 'package:movies_tv/movies_module/data/data_source/movie_remote_data_source.dart';
 import 'package:movies_tv/movies_module/domain/entities/movie.dart';
+import 'package:movies_tv/movies_module/domain/entities/movie_details.dart';
 
 abstract class BaseMoviesRepository {
 //طبعا هنا مفيش اي امبلمنتيشن يعني مينفعش بعد البراكيت احط كيرلي براكيت ف اي ميثود واكتب جةاهم
@@ -15,6 +15,8 @@ abstract class BaseMoviesRepository {
   Future<Either<Failure,List<Movie>>> getNowPlayingMovies () ;
   Future<Either<Failure,List<Movie>>> getPopularMovies();
   Future<Either<Failure,List<Movie>>> getTopRatedMovies () ;
+
+  Future<Either<Failure,MovieDetail>> getMovieDetail () ;
 
  //وبعدين هنروح لليوز كيس وطبعا مش هنعمل ملف دارت واحد دول هيبقوا تلات ملفات للتلات ميثود اللي فوق
 }
