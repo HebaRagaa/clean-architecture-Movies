@@ -16,7 +16,7 @@ class GetMovieDetailsUseCase extends BaseUseCase<MovieDetail, MovieDetailsParame
   //انا محتاج الاي دي بتاع الفيلم عشان اعرف اجيب الديتلز بتاعته فهحطه كباراميترز ف الكول هنا فهلاقيه
   //ضرب ايرور ف البيز يوز كيس لاني محددله تي بس فهعمل متغير اسميه مثلا باراميترز عشان يبقى معبر
   Future<Either<Failure, MovieDetail>> call(MovieDetailsParameters parameters) async {
-    return await baseMoviesRepository.getMovieDetail();
+    return await baseMoviesRepository.getMovieDetail(parameters);
   }
 }
 

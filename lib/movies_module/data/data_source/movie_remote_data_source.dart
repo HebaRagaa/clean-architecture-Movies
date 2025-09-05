@@ -6,7 +6,9 @@
 import 'package:movies_tv/core_%20module/error/exceptions.dart';
 import 'package:movies_tv/core_%20module/network/api_constance.dart';
 import 'package:movies_tv/core_%20module/network/error_message_model.dart';
+import 'package:movies_tv/movies_module/data/models/movie_details_model.dart';
 import 'package:movies_tv/movies_module/data/models/movie_model.dart';
+import 'package:movies_tv/movies_module/domain/usecases/get_movie_details_usecase.dart';
 
  //بنبقى محتاجين نعمل كونتراكت او ابستراكت كلاس بيحدد الاسماء والريترن تايب بتاع كل ميثود
   //وعشان لو حبيت تقرا او تعرف الميثودز يبقى من هنا
@@ -16,7 +18,7 @@ abstract class BaseMovieRemoteDataSource {
    Future<List<MovieModel>> getPopularMovies () ;
    Future<List<MovieModel>> getTopRatedMovies () ;
 
-  // Future<List<MovieModel>> getMovieDetail () ;
+   Future<MovieDetailsModel> getMovieDetail (MovieDetailsParameters parameters) ;
 
 // وبراجع ع اليوز كيس اللي ف الدومين لو اتضافت ميثود جديده اضيفها هنا ووبعدين اعملها اوفر رايد تحت
 }
@@ -79,10 +81,21 @@ class MovieRemoteDataSource extends BaseMovieRemoteDataSource {
 
   }
 
-  // @override
-  // Future<List<MovieModel>> getMovieDetail() {
-  //
-  // }
+  @override
+  Future<MovieDetailsModel> getMovieDetail(MovieDetailsParameters parameters) async {
+    //وهلاقي الموفي ديتلز باث محتاج الموفي اي دي وده هلاقيه متخزن ف الباراميترز ف السطر اللي فوقه فكتب بارا.موفي
+   final response = await Dio().get(ApiConstance.movieDetailsPath(parameters.movieId)) ;
+    if (response.statusCode == 200 ) {
+      //هنا راجعلي الداتا دايركت ف الريسبونس
+      return MovieDetailsModel.fromJson(response.data);
+    } else {
+      throw ServerException(
+        //واتاكد برضو ف حالة الايرور بيرجع استيتس ماسج واستيتس كود زي ما عامل ولا ايه
+          errorMessageModel: ErrorMessageModel.fromJson(response.data )) ;
+    }
+
+  }
+
 
 
   }

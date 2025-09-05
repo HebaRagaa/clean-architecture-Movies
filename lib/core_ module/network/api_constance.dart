@@ -21,5 +21,9 @@
 //هعمل ميثود تريترن استرنج وهبعتلها الباث اللي هو الكماله وهى هتبقى عباره عن البيز يو ار ال والباث
    static String  imageUrl(String path) => '$baseImageUrl$path' ;
 
+ //هحط ف الباث الموفي اي دي كفاليو طبعا وطبعا هحتاج استقبله بين القوسين ويريترن الباث اللي قدامنا ده
+static String movieDetailsPath (int movieId) =>
+    '$baseUrl/movie/$movieId?api_key=$apiKey' ;
+
 }
 
