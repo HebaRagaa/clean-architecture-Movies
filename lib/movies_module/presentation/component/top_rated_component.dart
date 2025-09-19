@@ -18,7 +18,7 @@ class TopRatedComponent extends StatelessWidget {
       buildWhen: (previous,current) =>
              previous.topRatedState != current.topRatedState,
       builder: (context, state) {
-        switch (state.nowPlayingState) {
+        switch (state.topRatedState) {
           case RequestState.loading:
             return SizedBox(
               //هعملها بنفس ارتفاع الاسلايدر

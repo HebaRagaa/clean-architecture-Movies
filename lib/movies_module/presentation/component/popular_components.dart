@@ -18,7 +18,7 @@ class PopularComponents extends StatelessWidget {
     buildWhen: (previous,current) =>
                 previous.popularState != current.popularState,
       builder: (context, state) {
-        switch (state.nowPlayingState) {
+        switch (state.popularState) {
           case RequestState.loading:
             return SizedBox(
               //هعملها بنفس ارتفاع الاسلايدر
