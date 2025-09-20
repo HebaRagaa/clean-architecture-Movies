@@ -8,7 +8,9 @@ import 'package:movies_tv/core_%20module/network/api_constance.dart';
 import 'package:movies_tv/core_%20module/network/error_message_model.dart';
 import 'package:movies_tv/movies_module/data/models/movie_details_model.dart';
 import 'package:movies_tv/movies_module/data/models/movie_model.dart';
+import 'package:movies_tv/movies_module/data/models/recommendation_model.dart';
 import 'package:movies_tv/movies_module/domain/usecases/get_movie_details_usecase.dart';
+import 'package:movies_tv/movies_module/domain/usecases/get_recommendation_usecase.dart';
 
  //بنبقى محتاجين نعمل كونتراكت او ابستراكت كلاس بيحدد الاسماء والريترن تايب بتاع كل ميثود
   //وعشان لو حبيت تقرا او تعرف الميثودز يبقى من هنا
@@ -19,6 +21,7 @@ abstract class BaseMovieRemoteDataSource {
    Future<List<MovieModel>> getTopRatedMovies () ;
 
    Future<MovieDetailsModel> getMovieDetail (MovieDetailsParameters parameters) ;
+   Future<List<RecommendationModel>> getRecommendation (RecommendationParameters parameters) ;
 
 // وبراجع ع اليوز كيس اللي ف الدومين لو اتضافت ميثود جديده اضيفها هنا ووبعدين اعملها اوفر رايد تحت
 }
@@ -91,6 +94,21 @@ class MovieRemoteDataSource extends BaseMovieRemoteDataSource {
     } else {
       throw ServerException(
         //واتاكد برضو ف حالة الايرور بيرجع استيتس ماسج واستيتس كود زي ما عامل ولا ايه
+          errorMessageModel: ErrorMessageModel.fromJson(response.data )) ;
+    }
+
+  }
+
+  @override
+  Future<List<RecommendationModel>> getRecommendation(
+         RecommendationParameters parameters) async {
+    final response = await Dio().get(ApiConstance.recommendationPath(parameters.id)) ;
+    if (response.statusCode == 200 ) {
+      return List<RecommendationModel>.from((response.data['results'] as List ).map(
+            (e) => RecommendationModel.fromJson (e) ,
+      ));
+    } else {
+      throw ServerException(
           errorMessageModel: ErrorMessageModel.fromJson(response.data )) ;
     }
 
