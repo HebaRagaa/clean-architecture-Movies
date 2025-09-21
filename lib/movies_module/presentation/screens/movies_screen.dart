@@ -37,7 +37,6 @@ class MoviesScreen extends StatelessWidget {
 
         //ومن الاحسن طبعا والصح البلوك بيلدر ع الصفحه كلها والاحسن يتحط ف الكومبوننت لان غير كده هيقلل البيرفورمنس ويزيد الميموري
       child: Scaffold(
-          backgroundColor: Colors.grey.shade900,
           body: SingleChildScrollView(
             key: const Key('movieScrollView'),
             // 🗝️ مفتاح مميز للـ ScrollView

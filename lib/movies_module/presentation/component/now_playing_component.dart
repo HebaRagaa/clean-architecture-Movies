@@ -7,6 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movies_tv/core_%20module/utils/enums.dart';
 import 'package:movies_tv/movies_module/presentation/controller/movies_bloc.dart';
 import 'package:movies_tv/movies_module/presentation/controller/movies_state.dart';
+import 'package:movies_tv/movies_module/presentation/screens/movies_details_screen.dart';
 import '../../../core_ module/network/api_constance.dart';
 
 
@@ -52,7 +53,11 @@ class NowPlayingComponent extends StatelessWidget {
                      return GestureDetector(
                        key: const Key('openMovieMinimalDetail'), // 🗝️ مفتاح مميز
                        onTap: () {
-                         /// TODO : NAVIGATE TO MOVIE DETAILS
+
+                         Navigator.push( context, MaterialPageRoute(
+                                   builder: (BuildContext context) => MovieDetailScreen(id: item.id)
+                         ),);
+
                        },
                        child: Stack( // 🏗️ طبقات فوق بعضها (الصورة + النصوص)
                          children: [

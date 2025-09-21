@@ -3,10 +3,11 @@
   import 'package:equatable/equatable.dart';
 
 class Recommendation extends Equatable {
-  final String backdropPath ;
+  //هقوله هنا انها ممكن تبقى نل ونحذف الركويرد من الكونستراكتور وعند الاوفر رايد برضو اقوله ممكن ترجع بنل
+  final String? backdropPath ;
   final int id;
 
-  const Recommendation({required this.backdropPath, required this.id});
+  const Recommendation({this.backdropPath, required this.id});
 
   @override
  List<Object?> get props => [backdropPath,id];

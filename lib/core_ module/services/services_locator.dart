@@ -7,6 +7,7 @@ import 'package:movies_tv/movies_module/domain/repository/base_movies_repository
 import 'package:movies_tv/movies_module/domain/usecases/get_Popular_movies_usecase.dart';
 import 'package:movies_tv/movies_module/domain/usecases/get_movie_details_usecase.dart';
 import 'package:movies_tv/movies_module/domain/usecases/get_now_playing_movies_usecase.dart';
+import 'package:movies_tv/movies_module/domain/usecases/get_recommendation_usecase.dart';
 import 'package:movies_tv/movies_module/domain/usecases/get_top_rated_movies_usecase.dart';
 import 'package:movies_tv/movies_module/presentation/controller/movie_details_bloc.dart';
 import 'package:movies_tv/movies_module/presentation/controller/movies_bloc.dart';
@@ -28,7 +29,8 @@ class ServicesLocator {
    sl.registerFactory( () => MoviesBloc(
     //هبعتله التلاته للتلاته اللي عندي الناو والبوب والتوب
        sl(),sl(),sl() ));
-   sl.registerFactory( () => MovieDetailsBloc(sl()));
+   //وبعد ماتضيف الريكومندشن ف الاستيت والبلوك هتلاقيه ضرب ايرور وبيقولك حط الاس ال التانيه
+   sl.registerFactory( () => MovieDetailsBloc(sl(),sl()));
 
 
     //use case
@@ -36,6 +38,7 @@ class ServicesLocator {
    sl.registerLazySingleton( () => GetPopularMoviesUseCase(sl())) ;
    sl.registerLazySingleton( () => GetTopRatedMoviesUseCase(sl())) ;
    sl.registerLazySingleton( () => GetMovieDetailsUseCase(sl())) ;
+   sl.registerLazySingleton( () => GetRecommendationUseCase(sl())) ;
 
    //Repository
  sl.registerLazySingleton<BaseMoviesRepository>(
